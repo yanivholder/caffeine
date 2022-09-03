@@ -238,7 +238,8 @@ public final class Registry {
   }
 
   private void registerDash() {
-    register(DashPolicy.class, DashPolicy::new);
+    registerMany(DashPolicy.class, DashPolicy::policies);
+//    register(DashPolicy.class, DashPolicy::new);
   }
 
   @AutoValue
