@@ -82,6 +82,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.typesafe.config.Config;
 
+import com.github.benmanes.caffeine.cache.simulator.policy.dash.DashRustPolicy;
+
 /**
  * The registry of caching policies.
  *
@@ -240,6 +242,7 @@ public final class Registry {
   private void registerDash() {
     registerMany(DashPolicy.class, DashPolicy::policies);
 //    register(DashPolicy.class, DashPolicy::new);
+    register(DashRustPolicy.class, DashRustPolicy::new);
   }
 
   @AutoValue
