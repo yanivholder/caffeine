@@ -240,7 +240,7 @@ public final class Registry {
   }
 
   private void registerDash() {
-    register(DashRustPolicy.class, DashRustPolicy::new);
+    registerMany(DashRustPolicy.class, DashRustPolicy::policies);
   }
 
   @AutoValue
