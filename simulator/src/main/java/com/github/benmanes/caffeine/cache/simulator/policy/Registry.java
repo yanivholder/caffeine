@@ -34,7 +34,6 @@ import com.github.benmanes.caffeine.cache.simulator.policy.Policy.PolicySpec;
 import com.github.benmanes.caffeine.cache.simulator.policy.adaptive.ArcPolicy;
 import com.github.benmanes.caffeine.cache.simulator.policy.adaptive.CarPolicy;
 import com.github.benmanes.caffeine.cache.simulator.policy.adaptive.CartPolicy;
-import com.github.benmanes.caffeine.cache.simulator.policy.dash.DashPolicy;
 import com.github.benmanes.caffeine.cache.simulator.policy.greedy_dual.CampPolicy;
 import com.github.benmanes.caffeine.cache.simulator.policy.greedy_dual.GDWheelPolicy;
 import com.github.benmanes.caffeine.cache.simulator.policy.greedy_dual.GdsfPolicy;
@@ -102,7 +101,8 @@ public final class Registry {
   }
 
   /**
-   * Returns all of the policies that have been configured for simulation and that meet a minimal
+   * Returns all of the policies that have been configured for simulation and that
+   * meet a minimal
    * set of supported characteristics.
    */
   public ImmutableSet<Policy> policies() {
@@ -240,14 +240,13 @@ public final class Registry {
   }
 
   private void registerDash() {
-    registerMany(DashPolicy.class, DashPolicy::policies);
-//    register(DashPolicy.class, DashPolicy::new);
     register(DashRustPolicy.class, DashRustPolicy::new);
   }
 
   @AutoValue
   abstract static class Factory {
     abstract Class<? extends Policy> policyClass();
+
     abstract Function<Config, Set<Policy>> creator();
 
     ImmutableSet<Characteristic> characteristics() {
